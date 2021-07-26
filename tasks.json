@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "new module on Clean Architecture",
+            "command": "mkdir 'lib/app/modules/${input:dirName}' && touch 'lib/app/modules/${input:dirName}/${input:dirName}_module.dart' && mkdir 'lib/app/modules/${input:dirName}/presenter' && touch 'lib/app/modules/${input:dirName}/presenter/${input:dirName}_controller.dart' 'lib/app/modules/${input:dirName}/presenter/${input:dirName}_page.dart' 'lib/app/modules/${input:dirName}/presenter/${input:dirName}_store.dart'",
+            "type": "shell",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "dirName",
+            "description": "Type a name to module on Clean Architecture in Flutter: ",
+            "default": "dart folder to create"
+        }
+    ]
+}

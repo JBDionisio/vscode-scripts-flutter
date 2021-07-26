@@ -1,0 +1,12 @@
+[
+    {
+        "key": "ctrl+shift+a",
+        "command": "dart-import.fix",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.tasks.runTask",
+        "args": "new module on Clean Architecture"
+    }
+]
