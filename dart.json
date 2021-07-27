@@ -1,0 +1,220 @@
+{
+    "FileNameClass": {
+        "prefix": "fileclass",
+        "body": [
+            "class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} {",
+            "  ${1:}",
+            "}"
+        ],
+        "description": "Get file name and create class with cammelCase"
+    },
+    "FileNameAbstractClass": {
+        "prefix": "absfileclass",
+        "body": [
+            "abstract class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} {",
+            "  ${1:}",
+            "}"
+        ],
+        "description": "Get file name and create abstract class with cammelCase"
+    },
+    "Usecase Test": {
+        "prefix": "uctest",
+        "body": [
+            "import 'package:flutter_test/flutter_test.dart';",
+            "",
+            "class ${2:className}Mock extends Mock implements I${2:className}Repository {}",
+            "",
+            "main() {",
+            "  ${1:usecase} usecase;",
+            "  I${2:className}Repository repository;",
+            "",
+            "  setUp(() {",
+            "    repository = ${2:className}Mock();",
+            "    usecase = ${1:usecase}(repository);",
+            "  });",
+            "}"
+        ],
+        "description": "Usecase Test"
+    },
+    "Infra Repository Test": {
+        "prefix": "repotest",
+        "body": [
+            "import 'package:flutter_test/flutter_test.dart';",
+            "",
+            "class ${2:className}Mock extends Mock implements I${2:className}Datasource {}",
+            "",
+            "main() {",
+            "  ${1:repository} repository;",
+            "  I${2:className}Datasource datasource;",
+            "",
+            "  setUp(() {",
+            "    datasource = ${2:className}Mock();",
+            "    repository = ${1:repository}(datasource);",
+            "  });",
+            "}"
+        ],
+        "description": "Infra Repository Test"
+    },
+    "External Datasource Test": {
+        "prefix": "dstest",
+        "body": [
+            "import 'package:flutter_test/flutter_test.dart';",
+            "",
+            "class ${2:className}Mock extends Mock implements I${2:className} {}",
+            "",
+            "main() {",
+            "  ${1:datasource} datasource;",
+            "  I${2:className} httpServiceMock;",
+            "",
+            "  setUp(() {",
+            "    httpServiceMock = ${2:className}Mock();",
+            "    datasource = ${1:datasource}(httpServiceMock);",
+            "  });",
+            "}"
+        ],
+        "description": "External Datasource Test"
+    },
+    "Mockito class": {
+        "prefix": "mock",
+        "body": [
+            "class ${1:className}Mock extends Mock implements ${1:className}{}"
+        ],
+        "description": "Mockito class"
+    },
+    "RxVariable": {
+        "prefix": "rxVar",
+        "body": [
+            "final _${1:name} = RxNotifier<${2:type}>(${3:});",
+            "${2:type} get ${1:name} => _${1:name}.value;",
+            "set${1:name}(${2:type} value) => _${1:name}.value = value;"
+        ],
+        "description": "RxVariable"
+    },
+    "RxClass": {
+        "prefix": "rxClass",
+        "body": [
+            "import 'package:rx_notifier/rx_notifier.dart';",
+            "class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} {",
+            "  ${1:}",
+            "}"
+        ],
+        "description": "RxClass"
+    },
+    "AbstractRxClass": {
+        "prefix": "absRxClass",
+        "body": [
+            "import 'package:rx_notifier/rx_notifier.dart';",
+            "abstract class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} {",
+            "  ${1:}",
+            "}"
+        ],
+        "description": "AbstractRxClass"
+    },
+    "RxBuilder": {
+        "prefix": "rxBuilder",
+        "body": [
+            "RxBuilder(",
+            "  builder: (_) {",
+            "   return ${1:widget};",
+            "  },",
+            "),"
+        ],
+        "description": "RxBuilder"
+    },
+    "FileName": {
+        "prefix": "filename",
+        "body": [
+            "${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g}"
+        ],
+        "description": "Get file name"
+    },
+    "Create module class": {
+        "prefix": "moduleclass",
+        "body": [
+            "import 'package:flutter_modular/flutter_modular.dart';",
+            "",
+            "import '${2:importname}_controller.dart';",
+            "import '${2:importname}_page.dart';",
+            "import '${2:importname}_store.dart';",
+            "import 'repositories/i_${2:importname}_repository.dart';",
+            "import 'repositories/${2:importname}_repository.dart';",
+            "",
+            "class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} extends ChildModule {",
+            "  @override",
+            "  List<Bind> get binds => [",
+            "        Bind((i) => ${1:classname}Controller(i())),",
+            "        Bind((i) => ${1:classname}Store()),",
+            "",
+            "        Bind<I${1:classname}Repository>((i) => ${1:classname}Repository(i())),",
+            "      ];",
+            "",
+            "  @override",
+            "  List<ModularRouter> get routers => [",
+            "        ModularRouter(",
+            "          Modular.initialRoute,",
+            "          child: (_, args) => ${1:classname}Page(),",
+            "        ),",
+            "      ];",
+            "",
+            "  static Inject get to => Inject<${1:classname}Module>.of();",
+            "}",
+            ""
+        ],
+        "description": "Create module class"
+    },
+    "Import Localization package": {
+        "prefix": "ilocalization",
+        "body": "import 'package:localization/localization.dart';",
+        "description": "Import Localization package"
+    },
+    "Import extensios file": {
+        "prefix": "iextensions",
+        "body": "import '/shared/data/extensions.dart';",
+        "description": "Import extensios file"
+    },
+    "filestfpage": {
+        "prefix": "filestf",
+        "body": [
+            "import 'package:flutter/material.dart';",
+            "",
+            "class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} extends StatefulWidget {",
+            "  @override",
+            "  _${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g}State createState() => _${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g}State();",
+            "}",
+            "",
+            "class _${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g}State extends State<${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g}> {",
+            "  @override",
+            "  Widget build(BuildContext context) {",
+            "    return Container(",
+            "      ${1:}",
+            "    );",
+            "  }",
+            "}",
+            ""
+        ],
+        "description": "Create a Stateful Widget with cammelCase filename"
+    },
+    "filestlpage": {
+        "prefix": "filestl",
+        "body": [
+            "import 'package:flutter/material.dart';",
+            "",
+            "class ${TM_FILENAME_BASE/((^[a-z])|_([a-z]))/${2:/upcase}${3:/upcase}/g} extends StatelessWidget {",
+            "  @override",
+            "  Widget build(BuildContext context) {",
+            "    return Container(",
+            "       ${1:}",
+            "    );",
+            "  }",
+            "}"
+        ],
+        "description": "Create a Stateless Widget with cammelCase filename"
+    },
+    "jsty": {
+        "prefix": "jsty",
+        "body": [
+            "style: TextStyle(),"
+        ],
+        "description": "Create struct to style Text Widget"
+    }
+}
