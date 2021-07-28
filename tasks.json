@@ -28,6 +28,20 @@
                 "showReuseMessage": false,
                 "clear": true
             }
+        },
+        {
+            "label": "new domain files on Clean Architecture",
+            "command": "touch '${input:pathName}/i_repositories/i_${input:usecaseName}_repository.dart' '${input:pathName}/params/${input:usecaseName}_params.dart' '${input:pathName}/usecases/${input:usecaseName}_usecase.dart'",
+            "type": "shell",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
         }
     ],
     "inputs": [
@@ -42,6 +56,12 @@
             "id": "pathName",
             "description": "Type a path on your project like 'lib/app/modules'",
             "default": "Path to create your files."
+        },
+        {
+            "type": "promptString",
+            "id": "usecaseName",
+            "description": "Type a name of usecase",
+            "default": "Usecase name to create:"
         }
     ]
 }
