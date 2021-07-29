@@ -42,6 +42,20 @@
                 "showReuseMessage": false,
                 "clear": true
             }
+        },
+        {
+            "label": "new infra files on Clean Architecture",
+            "command": "touch '${input:pathName}/i_datasourcers/i_${input:usecaseName}_datasource.dart' '${input:pathName}/repositories/${input:usecaseName}_repository.dart'",
+            "type": "shell",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
         }
     ],
     "inputs": [
